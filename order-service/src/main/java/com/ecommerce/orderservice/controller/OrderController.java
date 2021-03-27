@@ -1,4 +1,4 @@
-package com.ecommerce.accountservice.controller;
+package com.ecommerce.orderservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/account")
-public class AccountController {
+@RequestMapping("/api/order")
+public class OrderController {
 
     private final Environment env;
 
     @Autowired
-    public AccountController(Environment env) {
+    public OrderController(Environment env) {
         this.env = env;
     }
 
     @GetMapping("/hello")
     public String hello(){
-        return "Hello from account controller" + env.getProperty("local.server.port");
+        return "Hello from order controller" + env.getProperty("local.server.port");
     }
 }
