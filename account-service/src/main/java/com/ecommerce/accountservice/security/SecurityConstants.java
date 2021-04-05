@@ -1,7 +1,7 @@
 package com.ecommerce.accountservice.security;
 
 public class SecurityConstants {
-    public static final String SIGN_UP_URLS = "/api/account/signup/**";
+    public static final String SIGN_UP_URLS = "/api/account/public/**";
     public static final String ADMIN_URL = "/api/account/admin/**";
     public static final String H2_URL = "h2-console/**";
     public static final String SECRET = "MyJWTSecret";

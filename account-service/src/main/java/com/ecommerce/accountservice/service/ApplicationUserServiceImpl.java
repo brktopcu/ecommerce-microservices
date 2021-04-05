@@ -1,6 +1,7 @@
 package com.ecommerce.accountservice.service;
 
 import com.ecommerce.accountservice.domain.ApplicationUser;
+import com.ecommerce.accountservice.exception.UsernameAlreadyExistsException;
 import com.ecommerce.accountservice.repository.ApplicationUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,8 +33,7 @@ public class ApplicationUserServiceImpl implements ApplicationUserService {
             newUser.setConfirmPassword("");
             return applicationUserRepository.save(newUser);
         }catch (Exception err) {
-            //throw new UsernameAlreadyExistsException("Kullanici adi '" + newUser.getUsername() + "' zaten kayitli");
-            return null;
+            throw new UsernameAlreadyExistsException("Username '" + newUser.getUsername() + "' already exists");
         }
     }
 }
