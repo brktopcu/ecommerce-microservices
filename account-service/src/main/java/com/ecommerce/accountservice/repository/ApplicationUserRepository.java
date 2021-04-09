@@ -8,6 +8,6 @@ import java.util.UUID;
 public interface ApplicationUserRepository extends JpaRepository<ApplicationUser, UUID> {
 
     ApplicationUser findByUsername(String username);
-    ApplicationUser getById(UUID userId);
+    ApplicationUser getByApplicationUserId(UUID userId);
 
 }
