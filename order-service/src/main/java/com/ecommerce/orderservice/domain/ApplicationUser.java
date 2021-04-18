@@ -1,6 +1,7 @@
-package com.ecommerce.inventoryservice.domain;
+package com.ecommerce.orderservice.domain;
 
 import lombok.*;
+
 import java.util.UUID;
 
 @Getter

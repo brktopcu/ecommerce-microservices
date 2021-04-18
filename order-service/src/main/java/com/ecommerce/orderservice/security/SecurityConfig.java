@@ -1,4 +1,5 @@
-package com.ecommerce.inventoryservice.security;
+package com.ecommerce.orderservice.security;
+
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.ecommerce.inventoryservice.security.SecurityConstants.*;
+import static com.ecommerce.orderservice.security.SecurityConstants.*;
 
 @Configuration
 @EnableWebSecurity

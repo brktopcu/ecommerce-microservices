@@ -1,11 +1,11 @@
-package com.ecommerce.inventoryservice.security;
+package com.ecommerce.orderservice.security;
 
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import java.util.UUID;
 
-import static com.ecommerce.inventoryservice.security.SecurityConstants.*;
+import static com.ecommerce.orderservice.security.SecurityConstants.*;
 
 
 @Component
