@@ -1,6 +1,5 @@
-package com.ecommerce.accountservice.security;
+package com.ecommerce.inventoryservice.security;
 
-import com.ecommerce.accountservice.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.ecommerce.accountservice.security.SecurityConstants.*;
+import static com.ecommerce.inventoryservice.security.SecurityConstants.*;
 
 @Configuration
 @EnableWebSecurity
@@ -26,22 +25,7 @@ import static com.ecommerce.accountservice.security.SecurityConstants.*;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    private final CustomUserDetailsService customUserDetailService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(customUserDetailService)
-                .passwordEncoder(bCryptPasswordEncoder);
-    }
-
-    @Override
-    @Bean(BeanIds.AUTHENTICATION_MANAGER)
-    protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
-    }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
