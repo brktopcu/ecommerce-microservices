@@ -64,10 +64,8 @@ public class Book {
     @ManyToMany(mappedBy = "authorBooksList",cascade = CascadeType.ALL)
     private List<Author> bookAuthorsList =new ArrayList<>();
 
-    /*@JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "application_user_id")
-    private ApplicationUser user ;
+    @ManyToMany(mappedBy = "shoppingCartBooks",cascade = CascadeType.ALL)
+    private List<ShoppingCart> bookShoppingCart = new ArrayList<>();
 
     @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
     private List<Comment> bookCommentList = new ArrayList<>();
@@ -75,11 +73,9 @@ public class Book {
     @ManyToMany(mappedBy = "bookCategoryList",cascade = CascadeType.ALL)
     private List<Category> categoryBooksList =new ArrayList<>();
 
-
-
-    @ManyToMany(mappedBy = "shoppingCartBooks",cascade = CascadeType.ALL)
-    private List<ShoppingCart> bookShoppingCart = new ArrayList<>();
-
     @ManyToOne
-    private Sale sale;*/
+    private Sale sale;
+
+    private UUID applicationUserId;
+
 }
