@@ -21,7 +21,7 @@ public class Sale {
     @Column(columnDefinition = "BINARY(16)")
     private UUID saleId;
 
-    @Min(value = 0,message = "Discount rate cannot be negative")
+    @Min(value = 0,message = "Indirim orani negatif olamaz")
     private Integer discountRate;
 
     @OneToMany(mappedBy = "sale",cascade = CascadeType.ALL)

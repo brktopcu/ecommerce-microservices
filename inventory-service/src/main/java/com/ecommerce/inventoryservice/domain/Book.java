@@ -31,7 +31,7 @@ public class Book {
     @Digits(integer = 1,fraction = 1)
     private Float bookRate=0.0F;
 
-    @NotBlank(message = "Kitap adı gereklidir")
+    @NotBlank(message = "Kitap adi gereklidir")
     private String bookName;
 
     private String publisherName;
@@ -42,21 +42,21 @@ public class Book {
 
     private String bookBuyLink;
 
-    @NotNull(message = "Sayfa sayısı gereklidir")
+    @NotNull(message = "Sayfa sayisi gereklidir")
     private Integer bookPage;
 
-    //@NotNull(message = "Book price should not be blank")
-    //@Min(value = 0,message = "Price cannot be negative")
+    //@NotNull(message = "Kitap fiyati gereklidir")
+    //@Min(value = 0,message = "Fiyat negatif olamaz")
     private BigDecimal bookPrice;
 
-    //@NotNull(message = "Book stock should not be blank")
+    //@NotNull(message = "Stok alani gereklidir")
     private Long bookStock;
 
     @Lob
     private String bookDescription;
 
 
-    //@NotNull(message = "Book image should not be blank")
+    //@NotNull(message = "Kitap resmi gereklidir")
     @Lob
     private String bookThumbnail;
 

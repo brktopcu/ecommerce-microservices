@@ -23,7 +23,7 @@ public class ShoppingCart {
     @Column(columnDefinition = "BINARY(16)")
     private UUID shoppingCartId;
 
-    @Min(value = 0,message = "Total price cannot be negative")
+    @Min(value = 0,message = "Toplam fiyat negatif olamaz")
     private BigDecimal totalPriceShoppingCart = new BigDecimal(0);
 
     private String shoppingCartName;

@@ -21,13 +21,13 @@ public class Author {
     @Column(columnDefinition = "BINARY(16)")
     private UUID authorId;
 
-    //@NotBlank(message = "Author name should not be blank")
+    //@NotBlank(message = "Yazar adi gereklidir")
     private String authorName;
 
-    //@NotBlank(message = "Author image should not be blank")
+    //@NotBlank(message = "Yazar resmi gereklidir")
     private String authorThumbnail;
 
-    //@NotBlank(message = "Author description field should not be blank")
+    //@NotBlank(message = "Yazar aciklamasi gereklidir")
     private String authorBio;
 
     @ManyToMany

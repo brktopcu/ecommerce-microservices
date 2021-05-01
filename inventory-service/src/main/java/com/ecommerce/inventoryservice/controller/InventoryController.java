@@ -37,10 +37,7 @@ public class InventoryController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> saveBook(@Valid @RequestBody Book book , BindingResult result){
-
-        /*ResponseEntity<?> errorMap= mapValidationErrorService.mapValidationService(result);
-        if (result.hasFieldErrors()) return errorMap;*/
+    public ResponseEntity<?> saveBook(@Valid @RequestBody Book book){
 
         return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.CREATED);
     }

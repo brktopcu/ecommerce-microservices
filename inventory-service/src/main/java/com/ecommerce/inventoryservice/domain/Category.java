@@ -22,7 +22,7 @@ public class Category {
     @Column(columnDefinition = "BINARY(16)")
     private UUID categoryId;
 
-    @NotBlank(message = "Category description should not be blank")
+    @NotBlank(message = "Kategori aciklamasi gereklidir")
     private String categoryDescription;
 
     @ManyToMany

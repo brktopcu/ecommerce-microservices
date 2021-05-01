@@ -22,14 +22,14 @@ public class Comment {
     private UUID commentId;
 
 
-    @NotBlank(message = "Comment title should not be blank")
+    @NotBlank(message = "Yorum basligi gereklidir")
     private String commentTitle;
 
-    @NotBlank(message = "Comment description should not be blank")
+    @NotBlank(message = "Yorum aciklamasi gereklidir")
     private String commentDescription;
 
-    @NotBlank(message = "Rate field should not be blank")
-    @Range(min = 0,max = 5,message = "Please enter a valid rate")
+    @NotBlank(message = "Puan alani gereklidir")
+    @Range(min = 0,max = 5,message = "Lutfen uygun bir puan araligi girin")
     private Integer rate;
 
     @JsonIgnore
