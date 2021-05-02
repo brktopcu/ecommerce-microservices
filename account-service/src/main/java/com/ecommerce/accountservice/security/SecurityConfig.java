@@ -1,6 +1,6 @@
 package com.ecommerce.accountservice.security;
 
-import com.ecommerce.accountservice.service.CustomUserDetailsService;
+import com.ecommerce.accountservice.service.impl.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

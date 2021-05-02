@@ -26,7 +26,9 @@ public class ShoppingCart {
     @Min(value = 0,message = "Toplam fiyat negatif olamaz")
     private BigDecimal totalPriceShoppingCart = new BigDecimal(0);
 
-    private String shoppingCartName;
+    private String username;
+
+    private UUID bookOrderId;
 
     @ManyToMany
     @JsonIgnore
@@ -35,8 +37,4 @@ public class ShoppingCart {
             inverseJoinColumns = {@JoinColumn(name = "book_id")})
     private List<Book> shoppingCartBooks = new ArrayList<>();
 
-    /*@OneToOne(mappedBy = "shoppingCart")
-    private BookOrder bookOrder;*/
-
-    private UUID applicationUserId;
 }

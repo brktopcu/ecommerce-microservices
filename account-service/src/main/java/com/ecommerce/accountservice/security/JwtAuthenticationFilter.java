@@ -1,7 +1,7 @@
 package com.ecommerce.accountservice.security;
 
 import com.ecommerce.accountservice.domain.ApplicationUser;
-import com.ecommerce.accountservice.service.CustomUserDetailsService;
+import com.ecommerce.accountservice.service.impl.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;

@@ -5,7 +5,6 @@ import com.ecommerce.accountservice.request.LoginRequest;
 import com.ecommerce.accountservice.response.JWTLoginSuccessResponse;
 import com.ecommerce.accountservice.security.JwtTokenProvider;
 import com.ecommerce.accountservice.service.ApplicationUserService;
-import com.ecommerce.accountservice.service.MapValidationErrorService;
 import com.ecommerce.accountservice.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -24,22 +23,22 @@ import static com.ecommerce.accountservice.security.SecurityConstants.TOKEN_PREF
 
 @RestController
 @RequestMapping("/api/account")
-@CrossOrigin
 public class AccountController {
 
     private final Environment env;
     private final ApplicationUserService applicationUserService;
-    private final MapValidationErrorService mapValidationErrorService;
     private final UserValidator userValidator;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
 
     @Autowired
-    public AccountController(Environment env, ApplicationUserService applicationUserService,
-                             MapValidationErrorService mapValidationErrorService, UserValidator userValidator, JwtTokenProvider jwtTokenProvider, AuthenticationManager authenticationManager) {
+    public AccountController(Environment env,
+                             ApplicationUserService applicationUserService,
+                             UserValidator userValidator,
+                             JwtTokenProvider jwtTokenProvider,
+                             AuthenticationManager authenticationManager) {
         this.env = env;
         this.applicationUserService = applicationUserService;
-        this.mapValidationErrorService = mapValidationErrorService;
         this.userValidator = userValidator;
         this.jwtTokenProvider = jwtTokenProvider;
         this.authenticationManager = authenticationManager;
@@ -51,10 +50,7 @@ public class AccountController {
     }
 
     @PostMapping("/public/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result){
-
-        ResponseEntity <?> errorMap = mapValidationErrorService.mapValidationService(result);
-        if(result.hasFieldErrors()) return errorMap;
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -73,9 +69,6 @@ public class AccountController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody ApplicationUser user, BindingResult result){
 
         userValidator.validate(user,result);
-
-        ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationService(result);
-        if(result.hasFieldErrors()) return  errorMap;
 
         ApplicationUser newUser = applicationUserService.saveApplicationUser(user);
 

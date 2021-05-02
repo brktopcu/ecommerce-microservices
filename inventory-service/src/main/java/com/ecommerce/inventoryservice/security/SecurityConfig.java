@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js").permitAll()
                 .antMatchers(SIGN_UP_URLS).permitAll()
+                .antMatchers(CART_URL).permitAll()
                 .antMatchers(H2_URL).permitAll()
                 .antMatchers(ADMIN_URL).hasRole("ADMIN")
                 .anyRequest().authenticated();

@@ -2,6 +2,7 @@ package com.ecommerce.inventoryservice.security;
 
 public class SecurityConstants {
     public static final String SIGN_UP_URLS = "/api/inventory/public/**";
+    public static final String CART_URL = "/api/shoppingCart/new";
     public static final String ADMIN_URL = "/api/inventory/admin/**";
     public static final String H2_URL = "h2-console/**";
     public static final String SECRET = "MyJWTSecret";

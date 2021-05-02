@@ -1,4 +1,4 @@
-package com.ecommerce.accountservice.service;
+package com.ecommerce.accountservice.service.impl;
 
 import com.ecommerce.accountservice.domain.ApplicationUser;
 import com.ecommerce.accountservice.repository.ApplicationUserRepository;
