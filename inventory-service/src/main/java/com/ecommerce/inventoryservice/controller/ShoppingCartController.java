@@ -1,5 +1,6 @@
 package com.ecommerce.inventoryservice.controller;
 
+import com.ecommerce.inventoryservice.domain.Book;
 import com.ecommerce.inventoryservice.domain.ShoppingCart;
 import com.ecommerce.inventoryservice.response.BookSizeResponse;
 import com.ecommerce.inventoryservice.response.TotalPriceResponse;
@@ -44,4 +45,9 @@ public class ShoppingCartController {
     public ResponseEntity<TotalPriceResponse> getTotalPrice(Principal principal){
         return new ResponseEntity<>(shoppingCartService.getTotalPrice(principal.getName()),HttpStatus.OK);
     }
+    @PostMapping("/removeAll/{bookId}")
+    public ResponseEntity<List<Book>> removeBookFromCart(Principal principal, @PathVariable UUID bookId){
+        return new ResponseEntity<>(shoppingCartService.removeBookFromCart(principal.getName(), bookId),HttpStatus.OK);
+    }
+
 }

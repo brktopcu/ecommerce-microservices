@@ -22,4 +22,6 @@ public interface ShoppingCartService {
     List<Book> decreaseBookOrderFromCard(UUID bookId, String username);
 
     void create(String username);
+
+    List<Book> removeBookFromCart(String username, UUID bookId);
 }

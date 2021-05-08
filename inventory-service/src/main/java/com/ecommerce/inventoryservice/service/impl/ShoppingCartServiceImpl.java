@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -149,6 +150,22 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
 
     }
+
+    @Override
+    public List<Book> removeBookFromCart(String username, UUID bookId) {
+
+        var userShoppingCart = shoppingCartRepository.findByUsername(username);
+        var bookOrders = userShoppingCart.getShoppingCartBooks();
+        var bookList = bookOrders.stream()
+                .filter(book -> !book.getBookId().equals(bookId) )
+                .collect(Collectors.toList());
+
+        userShoppingCart.setShoppingCartBooks(bookList);
+        shoppingCartRepository.save(userShoppingCart);
+
+        return userShoppingCart.getShoppingCartBooks();
+    }
+
 
 
 }
