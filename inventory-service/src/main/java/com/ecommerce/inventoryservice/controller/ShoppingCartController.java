@@ -50,4 +50,10 @@ public class ShoppingCartController {
         return new ResponseEntity<>(shoppingCartService.removeBookFromCart(principal.getName(), bookId),HttpStatus.OK);
     }
 
+    @GetMapping("/shoppingCartBooks")
+    public ResponseEntity<List<Book>> getShoppingCartBooks(Principal principal){
+        return new ResponseEntity<>(shoppingCartService.getSoppingCartBooksByUsername(principal.getName()),HttpStatus.OK);
+    }
+
+
 }

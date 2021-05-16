@@ -3,7 +3,6 @@ package com.ecommerce.inventoryservice.service.impl;
 import com.ecommerce.inventoryservice.domain.Book;
 import com.ecommerce.inventoryservice.domain.Cargo;
 import com.ecommerce.inventoryservice.domain.ShoppingCart;
-import com.ecommerce.inventoryservice.exception.NotFoundException;
 import com.ecommerce.inventoryservice.repository.ShoppingCartRepository;
 import com.ecommerce.inventoryservice.response.BookSizeResponse;
 import com.ecommerce.inventoryservice.response.TotalPriceResponse;
@@ -56,18 +55,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public void setPrice(ShoppingCart shoppingCart) {
-
-
-        for(Book book : shoppingCart.getShoppingCartBooks()){
-            shoppingCart.setTotalPriceShoppingCart( shoppingCart.getTotalPriceShoppingCart()
-                    .add((book.getBookPrice()).multiply(new BigDecimal(book.getOrderSize()))));
-
-        }
-
-    }
-
-    @Override
     public List<BookSizeResponse> userShoppingCart(String username) {
 
         var shoppingCart = shoppingCartRepository.findByUsername(username);
@@ -91,13 +78,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     }
 
-
-    @Override
-    public ShoppingCart getShoppingCartById(UUID shoppingCartId) {
-
-        return shoppingCartRepository.findById(shoppingCartId)
-                .orElseThrow(()-> new NotFoundException("Shopping cart not found"));
-    }
 
     @Override
     public TotalPriceResponse getTotalPrice(String username) {
@@ -166,6 +146,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return userShoppingCart.getShoppingCartBooks();
     }
 
+    @Override
+    public List<Book> getSoppingCartBooksByUsername(String username) {
+        var userShoppingCart = shoppingCartRepository.findByUsername(username);
 
+        return userShoppingCart.getShoppingCartBooks();
+    }
 
 }

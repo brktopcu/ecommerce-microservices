@@ -56,4 +56,13 @@ public class InventoryController {
 
         return new ResponseEntity<>(bookService.updateBook(book),HttpStatus.OK);
     }
+
+    @PostMapping("/updateBookStock")
+    public ResponseEntity<?> updateBookStock(@Valid @RequestBody Book book){
+
+        Book oldBook = bookService.getBookById(book.getBookId());
+        oldBook.setBookStock(book.getBookStock());
+
+        return new ResponseEntity<>(bookService.saveBook(oldBook), HttpStatus.CREATED);
+    }
 }

@@ -11,11 +11,7 @@ import java.util.UUID;
 public interface ShoppingCartService {
     ShoppingCart addBookToCard(UUID bookID, String username);
 
-    void setPrice(ShoppingCart shoppingCart);
-
     List<BookSizeResponse> userShoppingCart(String username);
-
-    ShoppingCart getShoppingCartById(UUID shoppingCartId);
 
     TotalPriceResponse getTotalPrice(String username);
 
@@ -24,4 +20,6 @@ public interface ShoppingCartService {
     void create(String username);
 
     List<Book> removeBookFromCart(String username, UUID bookId);
+
+    List<Book> getSoppingCartBooksByUsername(String username);
 }
