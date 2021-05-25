@@ -1,6 +1,7 @@
 package com.ecommerce.inventoryservice.controller;
 
 import com.ecommerce.inventoryservice.domain.Book;
+import com.ecommerce.inventoryservice.request.BookFiltersRequest;
 import com.ecommerce.inventoryservice.service.BookService;
 import com.ecommerce.inventoryservice.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +65,10 @@ public class InventoryController {
         oldBook.setBookStock(book.getBookStock());
 
         return new ResponseEntity<>(bookService.saveBook(oldBook), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/filtered")
+    public ResponseEntity<?> getFilteredBooks(@RequestBody BookFiltersRequest bookFiltersRequest){
+        return new ResponseEntity<List<Book>>(bookService.getFilteredBooks(bookFiltersRequest),HttpStatus.OK);
     }
 }

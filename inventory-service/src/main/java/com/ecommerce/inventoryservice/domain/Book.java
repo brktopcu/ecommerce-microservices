@@ -24,12 +24,11 @@ public class Book {
     @Column(columnDefinition = "BINARY(16)")
     private UUID bookId;
 
-    private Integer totalRate=0;
-    private Integer commentCount=0;
+    private BigDecimal totalRate= BigDecimal.valueOf(0);
+    private BigDecimal commentCount= BigDecimal.valueOf(0);
     private Integer orderSize=0;
 
-    @Digits(integer = 1,fraction = 1)
-    private Float bookRate=0.0F;
+    private BigDecimal  bookRate=BigDecimal.valueOf(0);
 
     @NotBlank(message = "Kitap adi gereklidir")
     private String bookName;

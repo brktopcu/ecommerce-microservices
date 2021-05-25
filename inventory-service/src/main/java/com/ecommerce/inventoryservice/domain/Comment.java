@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Getter
@@ -21,14 +22,9 @@ public class Comment {
     @Column(columnDefinition = "BINARY(16)")
     private UUID commentId;
 
-
-    @NotBlank(message = "Yorum basligi gereklidir")
-    private String commentTitle;
-
     @NotBlank(message = "Yorum aciklamasi gereklidir")
     private String commentDescription;
 
-    @NotBlank(message = "Puan alani gereklidir")
     @Range(min = 0,max = 5,message = "Lutfen uygun bir puan araligi girin")
     private Integer rate;
 
@@ -37,5 +33,5 @@ public class Comment {
     @JoinColumn(name = "book_id")
     Book book;
 
-    private UUID applicationUserId;
+    private String username;
 }
